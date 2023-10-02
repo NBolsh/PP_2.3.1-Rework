@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/users")
 public class UsersController {
     private UserService userService;
 
@@ -20,7 +21,7 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping( "/users")
+    @GetMapping
     public String showAllUsers(Model model){
 
         model.addAttribute("allUsers", userService.getAllUsers());
@@ -28,13 +29,13 @@ public class UsersController {
         return "/users/list";
     }
 
-    @GetMapping("/users/new")
+    @GetMapping("/new")
     public String newUser(Model model) {
         model.addAttribute("user",new User());
         return "/users/userInfo";
     }
 
-    @PostMapping("/users")
+    @PostMapping
     public String addUser(@ModelAttribute("user") @Valid User user,
                           BindingResult bindingResult){
 
@@ -45,14 +46,14 @@ public class UsersController {
         return "redirect:/users";
     }
 
-    @GetMapping("/users/edit")
+    @GetMapping("/edit")
     public String findUser(@RequestParam("userId") long id,
                            Model model){
         model.addAttribute("user", userService.findUserById(id));
         return "/users/userInfo";
     }
 
-    @GetMapping("/users/delete")
+    @GetMapping("/delete")
     public String deleteUser(@RequestParam("userId") long id) {
         userService.deleteUser(id);
         return "redirect:/users";

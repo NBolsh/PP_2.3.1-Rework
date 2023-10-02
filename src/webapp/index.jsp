@@ -1,5 +1,7 @@
 <html>
 <body>
-<h2>Use /users to see "User list"</h2>
+<h2>Hello! Press the "Show list" button to see users list</h2>
+
+<input type="button" value="Show list" onclick="window.location.href ='/users'"/>
 </body>
 </html>
