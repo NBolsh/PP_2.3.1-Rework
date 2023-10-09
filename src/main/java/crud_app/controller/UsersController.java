@@ -15,6 +15,7 @@ import javax.validation.Valid;
 public class UsersController {
     private UserService userService;
 
+    private String userInfo = "/users/userInfo";
 
     @Autowired
     public UsersController(UserService userService){
@@ -32,7 +33,7 @@ public class UsersController {
     @GetMapping("/new")
     public String newUser(Model model) {
         model.addAttribute("user",new User());
-        return "/users/userInfo";
+        return userInfo;
     }
 
     @PostMapping
@@ -50,7 +51,7 @@ public class UsersController {
     public String findUser(@RequestParam("userId") long id,
                            Model model){
         model.addAttribute("user", userService.findUserById(id));
-        return "/users/userInfo";
+        return userInfo;
     }
 
     @GetMapping("/delete")

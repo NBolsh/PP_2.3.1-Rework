@@ -43,6 +43,8 @@ public class UserDAOImpl implements UserDAO {
     public void deleteUser(long id) {
         em.remove(em.find(User.class, id));
     }
+
+
     @Override
     public Optional<User> findUserByEmail(String email){
         String que = "SELECT u From User u where u.email = :email";

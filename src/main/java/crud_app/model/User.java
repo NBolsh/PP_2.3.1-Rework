@@ -1,6 +1,5 @@
 package crud_app.model;
 
-import com.sun.istack.NotNull;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
